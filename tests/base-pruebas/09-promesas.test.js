@@ -12,4 +12,16 @@ describe('Pruebas en 09-promesas', () => {
       done();
     });
   });
+  test('getHeroeByIdAsync debe de obtener un error si el héroe no existe', (done) => {
+    const id = 100;
+    getHeroeByIdAsync(id)
+      .then((hero) => {
+        expect(hero).toBeFalsy();
+        done();
+      })
+      .catch((error) => {
+        expect(error).toBe('No se pudo encontrar el héroe 100');
+        done();
+      });
+  });
 });
